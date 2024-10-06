@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// does QR factorization to give Q and R such that QR = Matrix. 
 module QRFactorization(
     input clk, 
     input Load, 
