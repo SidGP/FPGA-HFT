@@ -37,18 +37,25 @@ module QRFactroizationSim();
     wire NextStage2; 
     wire LoadCT1; 
     wire LoadCT2; 
-    wire [127:0] X1; 
-    wire [127:0] X2; 
-    wire [127:0] Y1; 
-    wire [127:0] Y2;
-    wire [127:0] R1; 
-    wire [127:0] R2; 
-    wire [127:0] R3; 
-    wire [127:0] R4;  
+    
+//    wire [127:0] X1in; 
+//    wire [127:0] X2in; 
+//    wire [127:0] Y1in; 
+//    wire [127:0] Y2in;
+//    wire [127:0] X1out; 
+//    wire [127:0] X2out; 
+//    wire [127:0] Y1out; 
+//    wire [127:0] Y2out;  
+    
+//    wire [127:0] R1; 
+//    wire [127:0] R2; 
+//    wire [127:0] R3; 
+//    wire [127:0] R4; 
 
-    QRFactorization dut(clk, Load, Matrix, MatrixR, MatrixQ, UnLoad // );  
-    ,MatrixIntermediate,Stage, NextStage1,NextStage2, LoadCT1, LoadCT2, 
-    X1, X2, Y1, Y2, R1, R2, R3, R4); 
+    QRFactorization dut(clk, Load, Matrix, MatrixR, MatrixQ, UnLoad //);  
+    ,Stage, MatrixIntermediate, NextStage1,NextStage2, LoadCT1, LoadCT2 ); 
+//    ,X1in, Y1in, X2in, Y2in, X1out, Y1out, X2out, Y2out, 
+//    R1, R2, R3, R4); 
 
     always #5 clk = ~clk;
 
@@ -105,9 +112,10 @@ module QRFactroizationSim();
         default: Matrix = {{15'd0, 15'd0, 15'd0, 15'd0}, {15'd0, 15'd0, 15'd0, 15'd0}, {15'd0, 15'd0, 15'd0, 15'd0}, {15'd0, 15'd0, 15'd0, 15'd0}}; 
         endcase
         
-        #20
+        #10
         Load=0; 
-        #100
+        wait (UnLoad ==1)
+        #10
         Load=1; 
         
         end 
