@@ -1,0 +1,4 @@
+Running: xsim.dir/QRFactroizationSim_behav/xsimk -simmode gui -wdb QRFactroizationSim_behav.wdb -simrunnum 0 -socket 50631
+Design successfully loaded
+Design Loading Memory Usage: 310480 KB (Peak: 310480 KB)
+Design Loading CPU Usage: 50 ms

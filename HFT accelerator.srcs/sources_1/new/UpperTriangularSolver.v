@@ -21,21 +21,21 @@
 
 
 module UpperTriangularSolver #(Elements=4, ElementBits =8)(
-    input [((Elements*Elements) *ElementBits)-1:0] Q,
-    input [((Elements*Elements) *ElementBits)-1:0] R, 
-    output[((Elements*Elements) *ElementBits)-1:0] V
+    input [127:0] R,
+    input [127:0] Q, 
+    output[127:0] KInverse
     );
     
-    wire [((Elements*Elements) * ElementBits) -1:0] TransposeQ; 
-    wire [((Elements*Elements) * ElementBits) -1:0] TransposeV; 
+//    wire [((Elements*Elements) * ElementBits) -1:0] TransposeQ; 
+    wire [((Elements*Elements) * ElementBits) -1:0] TransposeKInverse; 
     
 //    Transpose (Q,TransposeQ); 
     
-    ColumnSolver inst0(R, Q[127:96], TransposeV[127:96]); 
-    ColumnSolver inst1(R, Q[95:64], TransposeV[95:96]); 
-    ColumnSolver inst2(R, Q[63:32], TransposeV[63:32]); 
-    ColumnSolver inst3(R, Q[31:0], TransposeV[31:0]); 
+    ColumnSolver inst0(R, Q[127:96], TransposeKInverse[127:96]); 
+    ColumnSolver inst1(R, Q[95:64], TransposeKInverse[95:64]); 
+    ColumnSolver inst2(R, Q[63:32], TransposeKInverse[63:32]); 
+    ColumnSolver inst3(R, Q[31:0], TransposeKInverse[31:0]); 
     
-    Transpose (V, TransposeV); 
+    Transpose inst4(TransposeKInverse, KInverse); 
 
 endmodule

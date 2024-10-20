@@ -1,0 +1,4 @@
+Running: xsim.dir/UpperTriangularSolverSim_behav/xsimk -simmode gui -wdb UpperTriangularSolverSim_behav.wdb -simrunnum 0 -socket 58181
+Design successfully loaded
+Design Loading Memory Usage: 310268 KB (Peak: 310268 KB)
+Design Loading CPU Usage: 50 ms

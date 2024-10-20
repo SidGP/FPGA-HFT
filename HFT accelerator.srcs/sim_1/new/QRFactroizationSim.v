@@ -52,8 +52,8 @@ module QRFactroizationSim();
 //    wire [127:0] R3; 
 //    wire [127:0] R4; 
 
-    QRFactorization dut(clk, Load, Matrix, MatrixR, MatrixQ, UnLoad //);  
-    ,Stage, MatrixIntermediate, NextStage1,NextStage2, LoadCT1, LoadCT2 ); 
+    QRFactorization dut(clk, Load, Matrix, MatrixR, MatrixQ, UnLoad);  
+//    ,Stage, MatrixIntermediate, NextStage1,NextStage2, LoadCT1, LoadCT2 ); 
 //    ,X1in, Y1in, X2in, Y2in, X1out, Y1out, X2out, Y2out, 
 //    R1, R2, R3, R4); 
 

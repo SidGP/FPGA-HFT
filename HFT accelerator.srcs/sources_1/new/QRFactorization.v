@@ -23,18 +23,18 @@
 module QRFactorization(
     input clk, 
     input Load, 
-    input [255:0] Matrix, 
+    input [255:0] K, 
     
-    output reg [255:0] MatrixR,  
-    output reg [255:0] MatrixQ, 
-    output reg UnLoad, 
+    output reg [255:0] R,  
+    output reg [255:0] Q, 
+    output reg UnLoad 
     
-    output reg [2:0] Stage, 
-    output reg [511:0] MatrixIntermediate,
-    output NextStage1, 
-    output NextStage2, 
-    output reg LoadCT1, 
-    output reg LoadCT2 
+//    output reg [2:0] Stage, 
+//    output reg [511:0] MatrixIntermediate,
+//    output NextStage1, 
+//    output NextStage2, 
+//    output reg LoadCT1, 
+//    output reg LoadCT2 
     
 //    output [127:0]X1in, 
 //    output [127:0]Y1in, 
@@ -53,7 +53,7 @@ module QRFactorization(
     );
     
   
-//    reg [2:0] Stage; 
+    reg [2:0] Stage; 
   
     wire [127:0]X1in; 
     wire [127:0]X2in;  
@@ -66,11 +66,11 @@ module QRFactorization(
     wire [127:0]Y2out;
 
 //// remaining variables. 
-//    reg [511:0] MatrixIntermediate; 
-//    wire NextStage1; 
-//    wire NextStage2; 
-//    reg LoadCT1; 
-//    reg LoadCT2; 
+    reg [511:0] MatrixIntermediate; 
+    wire NextStage1; 
+    wire NextStage2; 
+    reg LoadCT1; 
+    reg LoadCT2; 
     
  // Declaring rows.     
     wire [127:0]R1; 
@@ -100,10 +100,10 @@ module QRFactorization(
     
         // Load MatrixIntermediate, Set Stage. 
         if (Load) begin 
-            MatrixIntermediate = {Matrix[255:192], 64'hFFFFFFFFFFFFFFFF, 
-                                  Matrix[191:128], 64'hFFFFFFFFFFFFFFFF, 
-                                  Matrix[127:64],  64'hFFFFFFFFFFFFFFFF, 
-                                  Matrix[63:0],    64'hFFFFFFFFFFFFFFFF} ; 
+            MatrixIntermediate = {K[255:192], 64'hFFFFFFFFFFFFFFFF, 
+                                  K[191:128], 64'hFFFFFFFFFFFFFFFF, 
+                                  K[127:64],  64'hFFFFFFFFFFFFFFFF, 
+                                  K[63:0],    64'hFFFFFFFFFFFFFFFF} ; 
             Stage = 3'd0; 
             LoadCT1 = 1; 
             LoadCT2 = 1; 
@@ -113,8 +113,8 @@ module QRFactorization(
          //UnLoad 
          else if (Stage == 3'b100) begin 
             UnLoad =1; 
-            MatrixR = {MatrixIntermediate[511:448], MatrixIntermediate[383:320], MatrixIntermediate[255:192], MatrixIntermediate[127:64]};
-            MatrixQ = {MatrixIntermediate[447:384], MatrixIntermediate[319:256], MatrixIntermediate[191:128], MatrixIntermediate[63:0]}; 
+            R = {MatrixIntermediate[511:448], MatrixIntermediate[383:320], MatrixIntermediate[255:192], MatrixIntermediate[127:64]};
+            Q = {MatrixIntermediate[447:384], MatrixIntermediate[319:256], MatrixIntermediate[191:128], MatrixIntermediate[63:0]}; 
          end  
          
          //Update to next Stage. 
