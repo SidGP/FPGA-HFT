@@ -1,0 +1,4 @@
+Running: xsim.dir/CordicScalingSim_behav/xsimk -simmode gui -wdb CordicScalingSim_behav.wdb -simrunnum 0 -socket 55137
+Design successfully loaded
+Design Loading Memory Usage: 310236 KB (Peak: 310236 KB)
+Design Loading CPU Usage: 80 ms

@@ -23,20 +23,20 @@
 module Cordic1(
     input clk, 
     input Load, 
-    input [15:0] Xin, 
-    input [15:0] Yin, 
+    input signed [15:0] Xin, 
+    input signed [15:0] Yin, 
     input [7:0] IterationNumber, 
     input Direction, 
     
-    output reg [15:0] Xout, 
-    output reg [15:0] Yout, 
+    output reg signed [15:0] Xout, 
+    output reg signed [15:0] Yout, 
     output reg UnLoad = 1'b0
     );
     
-    reg [15:0] X1; 
-    reg [15:0] Y1; 
-    reg [15:0] X2; 
-    reg [15:0] Y2; 
+    reg signed [15:0] X1; 
+    reg signed [15:0] Y1; 
+    reg signed [15:0] X2; 
+    reg signed [15:0] Y2; 
     
     
     always @(posedge clk) begin 
@@ -44,8 +44,8 @@ module Cordic1(
         X1 = Xin; 
         Y1 = Yin; 
         
-        X2 = (X1>> IterationNumber); 
-        Y2 = (Y1>> IterationNumber); 
+        X2 = (X1>>> IterationNumber); 
+        Y2 = (Y1>>> IterationNumber); 
         
         UnLoad = 1'b0; 
     end     
@@ -56,7 +56,7 @@ module Cordic1(
         end 
         else begin 
             Xout = X1 + Y2; 
-            Yout = Y1 - Y2; 
+            Yout = Y1 - X2; 
         end 
         UnLoad = 1'b1; 
     end 

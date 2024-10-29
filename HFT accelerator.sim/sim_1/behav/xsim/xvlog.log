@@ -1,4 +1,22 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sources_1/new/ColumnSolver.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ColumnSolver
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/EE2026-Calculator/FPGA-HFT/HFT accelerator.srcs/sources_1/new/Cordic1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Cordic1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/EE2026-Calculator/FPGA-HFT/HFT accelerator.srcs/sources_1/new/Cordic2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Cordic2
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/EE2026-Calculator/FPGA-HFT/HFT accelerator.srcs/sources_1/new/Cordic3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Cordic3
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/EE2026-Calculator/FPGA-HFT/HFT accelerator.srcs/sources_1/new/CordicScaling.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CordicScaling
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sources_1/new/Normalization.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Normalization
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sim_1/new/NormalizationSim.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module NormalizationSim
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/EE2026-Calculator/FPGA-HFT/HFT accelerator.srcs/sources_1/new/QRFactorization.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module QRFactorization
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sources_1/new/SolveForW.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SolveForW
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sources_1/new/Transpose.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Transpose
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sources_1/new/UpperTriangularSolver.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module UpperTriangularSolver
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/user/FPGA-HFT/HFT accelerator.srcs/sim_1/new/SolveForWSim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SolveForWSim

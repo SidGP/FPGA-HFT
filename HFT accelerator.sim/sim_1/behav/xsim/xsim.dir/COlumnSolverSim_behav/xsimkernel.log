@@ -1,4 +1,4 @@
-Running: xsim.dir/COlumnSolverSim_behav/xsimk -simmode gui -wdb COlumnSolverSim_behav.wdb -simrunnum 0 -socket 54449
+Running: xsim.dir/ColumnSolverSim_behav/xsimk -simmode gui -wdb ColumnSolverSim_behav.wdb -simrunnum 0 -socket 51169
 Design successfully loaded
-Design Loading Memory Usage: 310368 KB (Peak: 310368 KB)
-Design Loading CPU Usage: 60 ms
+Design Loading Memory Usage: 310380 KB (Peak: 310380 KB)
+Design Loading CPU Usage: 110 ms

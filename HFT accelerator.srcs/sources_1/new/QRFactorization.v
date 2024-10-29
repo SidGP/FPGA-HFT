@@ -27,14 +27,14 @@ module QRFactorization(
     
     output reg [255:0] R,  
     output reg [255:0] Q, 
-    output reg UnLoad 
+    output reg UnLoad
     
 //    output reg [2:0] Stage, 
-//    output reg [511:0] MatrixIntermediate,
+//    output reg [511:0] MatrixIntermediate, 
 //    output NextStage1, 
 //    output NextStage2, 
 //    output reg LoadCT1, 
-//    output reg LoadCT2 
+//    output reg LoadCT2,  
     
 //    output [127:0]X1in, 
 //    output [127:0]Y1in, 
@@ -44,7 +44,7 @@ module QRFactorization(
 //    output [127:0]X1out, 
 //    output [127:0]Y1out, 
 //    output [127:0]X2out, 
-//    output [127:0]Y2out, 
+//    output [127:0]Y2out
     
 //    output [127:0] R1, 
 //    output [127:0] R2, 
@@ -83,10 +83,10 @@ module QRFactorization(
     assign R4 = MatrixIntermediate[511:384]; 
     
 //Input wires for Cordic
-    assign X1in = Stage[1] ? (Stage[0] ? R2 : R2) : (Stage[0] ? R1 : R1); 
-    assign Y1in = Stage[1] ? (Stage[0] ? R4 : R3) : (Stage[0] ? R3 : R2); 
-    assign X2in = Stage[0] ? R2: R3; 
-    assign Y2in = R4; 
+    assign X1in = Stage[1] ? (Stage[0] ? R3>>32 : R2>>16) : (Stage[0] ? R1 : R1); 
+    assign Y1in = Stage[1] ? (Stage[0] ? R4>>32 : R3>>16) : (Stage[0] ? R3 : R2); 
+    assign X2in = Stage[0] ? R2>>16 : R3; 
+    assign Y2in = Stage[0] ? R4>>16 : R4; 
 
 
 // Instantaitng Cordics.   
@@ -100,21 +100,22 @@ module QRFactorization(
     
         // Load MatrixIntermediate, Set Stage. 
         if (Load) begin 
-            MatrixIntermediate = {K[255:192], 64'hFFFFFFFFFFFFFFFF, 
-                                  K[191:128], 64'hFFFFFFFFFFFFFFFF, 
-                                  K[127:64],  64'hFFFFFFFFFFFFFFFF, 
-                                  K[63:0],    64'hFFFFFFFFFFFFFFFF} ; 
+            MatrixIntermediate = {64'h003e8_0000_0000_0000, K[255:192], 
+                                  64'h0000_003e8_0000_0000, K[191:128],
+                                  64'h0000_0000_003e8_0000, K[127:64], 
+                                  64'h0000_0000_0000_003e8 , K[63:0]} ; 
             Stage = 3'd0; 
             LoadCT1 = 1; 
             LoadCT2 = 1; 
             UnLoad = 0; 
+            StageChanged = 0; 
             end 
          
          //UnLoad 
          else if (Stage == 3'b100) begin 
             UnLoad =1; 
-            R = {MatrixIntermediate[511:448], MatrixIntermediate[383:320], MatrixIntermediate[255:192], MatrixIntermediate[127:64]};
-            Q = {MatrixIntermediate[447:384], MatrixIntermediate[319:256], MatrixIntermediate[191:128], MatrixIntermediate[63:0]}; 
+            Q = {MatrixIntermediate[511:448], MatrixIntermediate[383:320], MatrixIntermediate[255:192], MatrixIntermediate[127:64]};
+            R = {MatrixIntermediate[447:384], MatrixIntermediate[319:256], MatrixIntermediate[191:128], MatrixIntermediate[63:0]}; 
          end  
          
          //Update to next Stage. 
@@ -124,33 +125,37 @@ module QRFactorization(
                         MatrixIntermediate[127:0] = X1out; 
                         MatrixIntermediate[255:128] = Y1out; 
                         MatrixIntermediate[383:256] = X2out; 
-                        MatrixIntermediate[511:384] = Y2out; 
+                        MatrixIntermediate[511:384] = Y2out;                 
                         LoadCT1 = 1; LoadCT2 = 1; 
                         Stage = 3'b001;
                         StageChanged = 1; 
                         end 
                 3'b001: begin 
                         MatrixIntermediate[127:0] = X1out; 
-                        MatrixIntermediate[255:128] = X2out; 
                         MatrixIntermediate[383:256] = Y1out; 
-                        MatrixIntermediate[511:384] = Y2out; 
-                        LoadCT1 = 1; LoadCT2 = 0; 
+                        MatrixIntermediate[255:128] = X2out<<16; 
+                        MatrixIntermediate[511:384] = Y2out<<16;                 
+                        LoadCT1 = 1; LoadCT2 = 1; 
                         Stage = 3'b010; 
                         StageChanged = 1; 
                         end
                 3'b010: begin 
-                        MatrixIntermediate[255:128] = X1out; 
-                        MatrixIntermediate[383:256] = Y1out; 
+                        MatrixIntermediate[255:128] = X1out<<16; 
+                        MatrixIntermediate[383:256] = Y1out<<16;   
                         LoadCT1 = 1; LoadCT2 = 0; 
                         Stage = 3'b011;
                         StageChanged = 1; 
                         end
                 3'b011: begin 
-                        MatrixIntermediate[255:128] = X1out; 
-                        MatrixIntermediate[383:256] = Y1out; 
-                        LoadCT1 = 0; LoadCT2 =0; 
+                        MatrixIntermediate[383:256] = X1out<<32; 
+                        MatrixIntermediate[511:384] = Y1out<<32;                
+                        LoadCT1 = 1; LoadCT2 =0; 
                         Stage = 3'b100; 
                         StageChanged =1; 
+                        end 
+                3'b100: begin 
+                        LoadCT1 =0; LoadCT2 =0; 
+                        StageChanged = 1; 
                         end 
                 default: begin 
                         LoadCT1 = 0; LoadCT2 =0;

@@ -32,7 +32,7 @@ module Cordic1Simulation();
     
     wire signed [n:0] Xout; 
     wire signed [n:0] Yout;  
-    wire [7:0]IterationNumberOut; 
+//    wire [7:0]IterationNumberOut; 
     wire UnLoad; 
     
     reg[7:0]i; 
@@ -141,7 +141,9 @@ module Cordic1Simulation();
         end
     end
         
-   always @(Load) begin
+   always @(posedge Load) begin
+        $display ("Xin, Yin"); 
+        $display ("%d, %d", Xin, Yin); 
         $display ("Xout, Yout"); 
         $display ("%d %d", Xout, Yout); 
    end 

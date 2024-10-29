@@ -1,1 +1,1 @@
---incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "COlumnSolverSim_behav" "xil_defaultlib.COlumnSolverSim" "xil_defaultlib.glbl" -log "elaborate.log" 
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "ColumnSolverSim_behav" "xil_defaultlib.ColumnSolverSim" "xil_defaultlib.glbl" -log "elaborate.log" 

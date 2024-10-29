@@ -1,7 +1,7 @@
 Vivado Simulator v2023.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: /home/user/Xilinx/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot NormalizationSim_behav xil_defaultlib.NormalizationSim xil_defaultlib.glbl -log elaborate.log 
+Running: /home/user/Xilinx/Vivado/2023.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot SolveForWSim_behav xil_defaultlib.SolveForWSim xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -9,7 +9,16 @@ Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.CordicScaling
+Compiling module xil_defaultlib.Cordic1
+Compiling module xil_defaultlib.Cordic2
+Compiling module xil_defaultlib.Cordic3
+Compiling module xil_defaultlib.QRFactorization
+Compiling module xil_defaultlib.Transpose_default
+Compiling module xil_defaultlib.ColumnSolver
+Compiling module xil_defaultlib.UpperTriangularSolver
 Compiling module xil_defaultlib.Normalization
-Compiling module xil_defaultlib.NormalizationSim
+Compiling module xil_defaultlib.SolveForW
+Compiling module xil_defaultlib.SolveForWSim
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot NormalizationSim_behav
+Built simulation snapshot SolveForWSim_behav

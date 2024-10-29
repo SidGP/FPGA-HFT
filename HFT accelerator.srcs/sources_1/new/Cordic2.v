@@ -33,7 +33,7 @@ module Cordic2(
     );
     
     wire Direction; 
-    assign Direction = Yin[0]; 
+    assign Direction = Yin[15]; 
     
     wire U1, U2, U3, U4, U5, U6, U7, U8; 
     assign UnLoad = (U1 & U2 & U3 & U4 & U5 & U6 & U7 & U8); 
