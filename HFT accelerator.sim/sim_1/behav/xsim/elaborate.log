@@ -6,19 +6,4 @@ Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.CordicScaling
-Compiling module xil_defaultlib.Cordic1
-Compiling module xil_defaultlib.Cordic2
-Compiling module xil_defaultlib.Cordic3
-Compiling module xil_defaultlib.QRFactorization
-Compiling module xil_defaultlib.Transpose_default
-Compiling module xil_defaultlib.ColumnSolver
-Compiling module xil_defaultlib.UpperTriangularSolver
-Compiling module xil_defaultlib.Normalization
-Compiling module xil_defaultlib.SolveForW
-Compiling module xil_defaultlib.SolveForWSim
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot SolveForWSim_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
