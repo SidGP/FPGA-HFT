@@ -28,28 +28,6 @@ module QRFactorization(
     output reg [255:0] R,  
     output reg [255:0] Q, 
     output reg UnLoad
-    
-//    output reg [2:0] Stage, 
-//    output reg [511:0] MatrixIntermediate, 
-//    output NextStage1, 
-//    output NextStage2, 
-//    output reg LoadCT1, 
-//    output reg LoadCT2,  
-    
-//    output [127:0]X1in, 
-//    output [127:0]Y1in, 
-//    output [127:0]X2in, 
-//    output [127:0]Y2in, 
-    
-//    output [127:0]X1out, 
-//    output [127:0]Y1out, 
-//    output [127:0]X2out, 
-//    output [127:0]Y2out
-    
-//    output [127:0] R1, 
-//    output [127:0] R2, 
-//    output [127:0] R3, 
-//    output [127:0] R4
     );
     
   

@@ -1,0 +1,30 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sources_1/new/ColumnSolver.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sources_1/new/Transpose.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sources_1/new/UpperTriangularSolver.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/Cordic1.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/Cordic2.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/Cordic3.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/CordicScaling.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sources_1/new/Normalization.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/QRFactorization.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sources_1/new/SolveForW.v" \
+"../../../../HFT accelerator.srcs/sources_1/new/Normalization2.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/SolveForWSim2.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sim_1/new/SolveForWSim.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sim_1/new/NormalizationSim.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/QRFactroizationSim.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sim_1/new/UpperTriangularSolverSim.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sim_1/new/COlumnSolverSim.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/Cordic3Sim.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/CordicScalingSim.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/Cordic2Sim.v" \
+"../../../../HFT accelerator.srcs/sim_1/new/Cordic1Sim.v" \
+"../../../../../../FPGA-HFT/HFT accelerator.srcs/sim_1/new/TransposeSim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

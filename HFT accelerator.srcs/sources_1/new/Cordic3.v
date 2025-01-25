@@ -28,13 +28,10 @@ module Cordic3(
     
     output [127:0]XoutScaled, 
     output [127:0]YoutScaled, 
-    output reg UnLoad, 
-    
-    output [127:0] XintermediateOut, 
-    output [127:0] YintermediateOut, 
-    
-    output reg [7:0] Counter 
+    output reg UnLoad
     );
+    
+    reg [7:0] Counter = 7'd0; 
     
     reg [127:0] Xout; 
     reg [127:0] Yout; 
@@ -56,16 +53,15 @@ module Cordic3(
     CordicScaling Yout6 (Counter, Yout[111:96], YoutScaled[111:96]); 
     CordicScaling Yout7 (Counter, Yout[127:112], YoutScaled[127:112]); 
     
-    parameter Tolerance = 16'd1; 
+    reg [7:0] Tolerance = 0; 
     
     reg [127:0] XintermediateIn; 
     reg [127:0] YintermediateIn; 
-//    wire [127:0] XintermediateOut;  
-//    wire [127:0] YintermediateOut; 
+    wire [127:0] XintermediateOut;  
+    wire [127:0] YintermediateOut; 
     
     reg LoadInternal = 1'b1; 
     wire UnLoadInternal; 
-//    reg [7:0] Counter = 7'd0; 
     
     reg UnLoaded =0; 
     
@@ -77,16 +73,17 @@ module Cordic3(
             YintermediateIn = Yin; 
             UnLoad = 1'b0; 
             LoadInternal = 1'b1; 
-            Counter = 7'd0; 
+            Counter = 7'd0;
+            Tolerance = 2 ;  
         end 
         
-        else if ((YintermediateIn[15:0] < Tolerance) && UnLoadInternal) begin 
+        else if (((YintermediateIn[15:0] <= Tolerance) && UnLoadInternal) | (Counter==15)) begin 
             Xout = XintermediateOut; 
             Yout = YintermediateOut; 
             UnLoad = 1'b1; 
         end 
         
-        else if (YintermediateIn[15:0]< Tolerance) begin 
+        else if (YintermediateIn[15:0]<= Tolerance) begin 
             Xout = XintermediateIn; 
             Yout = YintermediateIn; 
             UnLoad = 1'b1; 
